@@ -39,7 +39,9 @@
 /**
  * You should add more #includes here
  */
-//#include "okapi/api.hpp"
+ 
+//#include "pros/apix.h"
+#include "okapi/api.hpp"
 //#include "pros/api_legacy.h"
 
 /**
@@ -72,9 +74,14 @@ void opcontrol(void);
 #endif
 
 #ifdef __cplusplus
-/**
- * You can add C++-only headers here
- */
+
+#include "CustomHeaders/drive.hpp"
+#include "CustomHeaders/flywheel.hpp"
+#include "CustomHeaders/globals.hpp"
+#include "CustomHeaders/intake.hpp"
+#include "CustomHeaders/shooting.hpp"
+#include "CustomHeaders/autons.hpp"
+
 //#include <iostream>
 #endif
 
