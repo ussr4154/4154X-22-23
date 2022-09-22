@@ -17,6 +17,7 @@ extern pros::Controller controller;
 //Sensors & Pistons
 extern pros::ADIDigitalOut leftFlywheel;
 extern pros::ADIDigitalOut rightFlywheel;
+extern pros::ADIDigitalOut expansion;
 
 //Global Variables
 extern bool highAngle;

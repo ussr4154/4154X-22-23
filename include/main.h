@@ -81,6 +81,7 @@ void opcontrol(void);
 #include "CustomHeaders/intake.hpp"
 #include "CustomHeaders/shooting.hpp"
 #include "CustomHeaders/autons.hpp"
+#include "EZ-Template/api.hpp"
 
 //#include <iostream>
 #endif

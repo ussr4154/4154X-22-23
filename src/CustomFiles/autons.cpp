@@ -22,8 +22,8 @@ std::shared_ptr<AsyncMotionProfileController> profileController =
 void spinRoller(int theta){
   intake.tare_position();
 
-  while(intake.get_position() < theta){
-    intake = 70;
+  while(fabs(intake.get_position()) < theta){
+    intake = -70;
   }
 
   intake = 0;
@@ -48,48 +48,23 @@ void index(){
   intake = 0;
 }
 
-void fullWinPoint(){
-
-  flywheel.move_velocity(570);
-
-  spinRoller(300);
-
-  chassis->setMaxVelocity(300);
-
-  chassis->moveDistance(0.2_ft);
+void angleUp(){
   
-  pros::delay(2800);
-
-  index();
-
-  pros::delay(1100);
-
-  index();
-
-  chassis->setMaxVelocity(200);
-
-  chassis->turnAngle(74_deg);
-
-  chassis->setMaxVelocity(400);
-
-  pros::delay(200);
-
-  /*profileController->generatePath(
-      {{0_ft, 0_ft, 0_deg}, {3.5_ft, 0_ft, 0_deg}}, "moveA");
-  profileController->setTarget("moveA");
-  profileController->waitUntilSettled();
-  */
-  pros::delay(300);
-
-  chassis->setMaxVelocity(200);
-
-  chassis->turnAngle(75_deg);
+  leftFlywheel.set_value(true);
+  rightFlywheel.set_value(true);
 
 }
 
-void testAuton(){
+void angleDown(){
+  
+  leftFlywheel.set_value(false);
+  rightFlywheel.set_value(false);
 
-  flywheel.move_velocity(540);
+}
+
+void fullWinPoint(){
+
+  flywheel.move_velocity(435);
 
   spinRoller(200);
 
@@ -101,7 +76,7 @@ void testAuton(){
 
   chassis->setMaxVelocity(200);
   
-  chassis->turnAngle(88_deg);
+  chassis->turnAngle(87_deg);
 
   chassis->setMaxVelocity(350);
 
@@ -127,9 +102,11 @@ void testAuton(){
   profileController->setTarget("moveB");
   profileController->waitUntilSettled();
 
-  chassis->setMaxVelocity(200);
+  chassis->setMaxVelocity(170);
+
+    angleUp();
   
-  chassis->turnAngle(-21.5_deg);
+  chassis->turnAngle(-24_deg);
 
   index();
 
@@ -141,7 +118,7 @@ void testAuton(){
 
   chassis->setMaxVelocity(200);
   
-  chassis->turnAngle(65_deg);
+  chassis->turnAngle(63_deg);
 
   chassis->setMaxVelocity(500);
 
@@ -156,19 +133,109 @@ void testAuton(){
 
   chassis->setMaxVelocity(350);
 
-  profileController->generatePath(
-      {{0_ft, 0_ft, 0_deg}, {2_ft, 0_ft, 0_deg}}, "moveC");
-  profileController->setTarget("moveC");
-  profileController->waitUntilSettled();
+  chassis->moveDistance(1.3_ft);
 
   chassis->setMaxVelocity(200);
   
   chassis->turnAngle(-86_deg);
 
+  intake = 127;
+
   pros::delay(200);
 
-  chassis->moveDistance(-1.2_ft);
+  chassis->moveDistance(-.9_ft);
 
   spinRoller(300);
 
+}
+
+void testAuton(){
+
+  flywheel.move_velocity(440);
+
+  spinRoller(200);
+
+  chassis->setMaxVelocity(200);
+
+  chassis->moveDistance(0.3_ft);
+
+  pros::delay(200);
+
+  chassis->setMaxVelocity(200);
+  
+  chassis->turnAngle(87_deg);
+
+  chassis->setMaxVelocity(350);
+
+  clearEncoders();
+
+  profileController->generatePath(
+      {{0_ft, 0_ft, 0_deg}, {6_ft, 0_ft, 0_deg}}, "moveA");
+  profileController->setTarget("moveA");
+  profileController->waitUntilSettled();
+
+  pros::delay(200);
+
+  chassis->setMaxVelocity(200);
+  
+  chassis->turnAngle(-84_deg);
+
+  clearEncoders();
+
+  chassis->setMaxVelocity(350);
+
+  profileController->generatePath(
+      {{0_ft, 0_ft, 0_deg}, {4.6_ft, 0_ft, 0_deg}}, "moveB");
+  profileController->setTarget("moveB");
+  profileController->waitUntilSettled();
+
+  chassis->setMaxVelocity(140);
+
+  angleUp();
+  
+  chassis->turnAngle(-24_deg);
+  
+  pros::delay(500);
+
+  index();
+
+  pros::delay(1000);
+
+  index();
+
+  flywheel.move_velocity(530);
+
+  chassis->setMaxVelocity(200);
+  
+  chassis->turnAngle(-110_deg);
+
+  pros::delay(200);
+
+  intake = 127;
+
+  chassis->setMaxVelocity(190);
+
+  angleDown();
+
+  chassis->moveDistance(-5_ft);
+
+  pros::delay(500);
+
+  intake = 0;
+
+  chassis->turnAngle(57_deg);
+  
+  pros::delay(200);
+
+  index();
+
+  pros::delay(500);
+
+  index();
+
+  pros::delay(500);
+
+  index();
+
+  
 }

@@ -16,6 +16,7 @@ pros::Controller controller(pros::E_CONTROLLER_MASTER);
 //Sensors & Pistons
 pros::ADIDigitalOut leftFlywheel('B', false);
 pros::ADIDigitalOut rightFlywheel('A', false);
+pros::ADIDigitalOut expansion('C', false);
 
 //Global Vars
 bool highAngle = false;
