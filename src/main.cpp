@@ -1,7 +1,9 @@
 #include "main.h"
 
 void initialize() {
+
 	pros::lcd::initialize();
+	defaultConstants();
 
 	if (pros::competition::is_connected()){
 		ez::as::initialize();
@@ -27,7 +29,7 @@ void autonomous() {
   	backRight.set_brake_mode(pros::E_MOTOR_BRAKE_BRAKE);
   	backLeft.set_brake_mode(pros::E_MOTOR_BRAKE_BRAKE);
 	*/
-	testAuton();
+	skills();
 }
 
 void opcontrol() {
