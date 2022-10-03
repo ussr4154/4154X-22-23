@@ -46,5 +46,7 @@ void opcontrol() {
 		setShotAngle();
 		shootStrings();
 
+		pros::delay(10);
+
 	}
 }

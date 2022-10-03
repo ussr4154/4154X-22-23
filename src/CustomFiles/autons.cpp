@@ -12,14 +12,14 @@ std::shared_ptr<OdomChassisController> chassis =
 Drive EZchassis (
   // Left Chassis Ports (negative port will reverse it!)
   //   the first port is the sensored port (when trackers are not used!)
-  {10, 8, 9}
+  {9, 8, 7}
 
   // Right Chassis Ports (negative port will reverse it!)
   //   the first port is the sensored port (when trackers are not used!)
-  ,{7, 5, 6}
+  ,{10, 18, 6}
 
   // IMU Port
-  ,2
+  ,4
 
   // Wheel Diameter (Remember, 4" wheels are actually 4.125!)
   //    (or tracking wheel diameter)
@@ -164,7 +164,6 @@ void fullWinPoint(){
 
   angleUp();
 
-
   EZchassis.set_drive_pid(-3, 30, true);
   EZchassis.wait_drive();
 
@@ -294,9 +293,12 @@ void fiveDisc(){
 
 void skills(){
 
-  flywheel.move_velocity(380);
+  flywheel.move_velocity(-440);
 
-  spinRoller(250, true);
+  EZchassis.set_drive_pid(-3, 30, true);
+  EZchassis.wait_drive();
+
+  //spinRoller(250, true);
 
   EZchassis.set_drive_pid(18, 70, true);
   EZchassis.wait_drive();
@@ -306,14 +308,14 @@ void skills(){
   EZchassis.set_turn_pid(89, 100);
   EZchassis.wait_drive();
 
-  EZchassis.set_drive_pid(-21.5, 50, true);
+  EZchassis.set_drive_pid(-22.5, 50, true);
   EZchassis.wait_drive();
 
-  spinRoller(250, true);
+  //spinRoller(250, true);
 
   angleUp();
 
-  EZchassis.set_drive_pid(64, 110, true);
+  EZchassis.set_drive_pid(65, 110, true);
   EZchassis.wait_drive();
 
   EZchassis.set_turn_pid(110, 100);
@@ -334,14 +336,14 @@ void skills(){
   EZchassis.set_turn_pid(180, 100);
   EZchassis.wait_drive();
 
-  EZchassis.set_drive_pid(-56, 40, true);
+  EZchassis.set_drive_pid(-30, 60, true); //56 old
   EZchassis.wait_drive();
 
   pros::delay(200);
 
-  flywheel.move_velocity(365);
+  flywheel.move_velocity(-470);
 
-  EZchassis.set_drive_pid(28, 70, true);
+  EZchassis.set_drive_pid(4, 70, true);
   EZchassis.wait_drive();
 
   EZchassis.set_turn_pid(134, 100);
@@ -361,7 +363,35 @@ void skills(){
 
   pros::delay(100);
 
-  EZchassis.set_turn_pid(232, 100);
+  EZchassis.set_turn_pid(180, 100);
+  EZchassis.wait_drive();
+
+  intake = 127;
+
+  EZchassis.set_drive_pid(-26, 60, true); 
+  EZchassis.wait_drive();
+
+  pros::delay(200);
+
+  EZchassis.set_drive_pid(31, 70, true);
+  EZchassis.wait_drive();
+
+  intake = 0;
+
+  EZchassis.set_turn_pid(134, 100);
+  EZchassis.wait_drive();
+
+  pros::delay(100);
+
+  index();
+
+  pros::delay(500);
+
+  index();
+
+  pros::delay(100);
+
+  EZchassis.set_turn_pid(229, 100);
   EZchassis.wait_drive();
 
   intake = 127;
@@ -426,16 +456,20 @@ void skills(){
 
   index();
 
+  pros::delay(500);
+
+  flywheel = 0;
+
   EZchassis.set_drive_pid(-49, 70, true);
   EZchassis.wait_drive();
 
   EZchassis.set_turn_pid(270, 100);
   EZchassis.wait_drive();
 
-  EZchassis.set_drive_pid(-10, 70, true);
+  EZchassis.set_drive_pid(-11, 70, true);
   EZchassis.wait_drive();
 
-  spinRoller(400, true);
+  //spinRoller(400, true);
 
   EZchassis.set_drive_pid(20, 70, true);
   EZchassis.wait_drive();
@@ -443,10 +477,10 @@ void skills(){
   EZchassis.set_turn_pid(180, 50);
   EZchassis.wait_drive();
 
-  EZchassis.set_drive_pid(-20, 70, true);
+  EZchassis.set_drive_pid(-21, 70, true);
   EZchassis.wait_drive();
 
-  spinRoller(400, true);
+  //spinRoller(400, true);
 
   EZchassis.set_drive_pid(20, 70, true);
   EZchassis.wait_drive();
@@ -520,7 +554,7 @@ void testAuton(){
 
   //angleUp();
 
-  flywheel.move_velocity(570);
+  flywheel.move_velocity(563);
 
   EZchassis.set_drive_pid(25, 90, true);
   EZchassis.wait_drive();
@@ -531,7 +565,7 @@ void testAuton(){
   EZchassis.set_drive_pid(-11, 30, true);
   EZchassis.wait_drive();
 
-  spinRoller(400, true);
+  spinRoller(410, true);
 
   EZchassis.set_drive_pid(5, 30, true);
   EZchassis.wait_drive();
@@ -558,7 +592,7 @@ void testAuton(){
 
   angleUp();
 
-  flywheel.move_velocity(440);
+  flywheel.move_velocity(430);
 
   intake = 127;
 

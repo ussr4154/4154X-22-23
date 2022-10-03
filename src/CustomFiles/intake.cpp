@@ -5,6 +5,7 @@ void setIntake() {
             intake.move_velocity(600);
         }
     else if(controller.get_digital(pros::E_CONTROLLER_DIGITAL_L2)){
+            flywheel = 127;
             intake.move_velocity(-500);
         }
     else {
