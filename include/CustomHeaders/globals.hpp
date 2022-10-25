@@ -21,3 +21,4 @@ extern pros::ADIDigitalOut expansion;
 
 //Global Variables
 extern bool highAngle;
+extern bool holdingIndex;

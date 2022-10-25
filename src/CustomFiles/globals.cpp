@@ -14,9 +14,7 @@ pros::Motor intake(5, pros::E_MOTOR_GEARSET_06, false, pros::E_MOTOR_ENCODER_COU
 pros::Controller controller(pros::E_CONTROLLER_MASTER);
 
 //Sensors & Pistons
-pros::ADIDigitalOut leftFlywheel('B', false);
-pros::ADIDigitalOut rightFlywheel('A', false);
-pros::ADIDigitalOut expansion('C', false);
+pros::ADIDigitalOut expansion('A', false);
 
 //Global Vars
 bool highAngle = false;

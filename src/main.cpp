@@ -11,8 +11,8 @@ void initialize() {
 
 	ez::as::auton_selector.add_autons({
     Auton("Full Win Point", fullWinPoint),
-    Auton("5 Shots", testAuton),
-    //Auton("Alternate Roller", auto3),
+    Auton("5 Shots", fiveDisc),
+    Auton("Right Side", rightSide),
   });
 }
 
@@ -29,7 +29,7 @@ void autonomous() {
   	backRight.set_brake_mode(pros::E_MOTOR_BRAKE_BRAKE);
   	backLeft.set_brake_mode(pros::E_MOTOR_BRAKE_BRAKE);
 	*/
-	skills();
+	fiveDisc();
 }
 
 void opcontrol() {
@@ -43,7 +43,6 @@ void opcontrol() {
 		setFlywheelToggle();
 		setFlywheel();
 		toggleShotAngle();
-		setShotAngle();
 		shootStrings();
 
 		pros::delay(10);

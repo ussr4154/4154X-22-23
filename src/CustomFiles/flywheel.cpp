@@ -25,6 +25,15 @@ void setFlywheelPower(int target){
 
 void setFlywheel(){
     if (flywheelBoolean){
-        setFlywheelPower(400);
+        if(holdingIndex){
+            flywheel = -127;
+        }
+        else {
+            flywheel.move_velocity(-340);
+        }
+    }
+
+    else {
+        flywheel = 0;
     }
 }
