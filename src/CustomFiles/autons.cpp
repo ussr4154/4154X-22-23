@@ -146,6 +146,15 @@ void index(){
   intake = 0;
 }
 
+void halfIndex(){
+  intake.tare_position();
+
+  while(fabs(intake.get_position()) < 150){
+    intake.move_velocity(-540);
+  }
+
+  intake = 0;
+}
 
 void fullWinPoint(){
 
@@ -209,7 +218,7 @@ void fullWinPoint(){
 
 void fiveDisc(){
 
-  flywheel.move_velocity(-445);
+  flywheel.move_velocity(-442);
 
   EZchassis.set_drive_pid(-3, 50, true);
   EZchassis.wait_drive();
@@ -224,17 +233,17 @@ void fiveDisc(){
 
   pros::delay(2000);
 
-  index();
+  halfIndex();
 
-  pros::delay(1000);
-
-  index();
-
-  pros::delay(1000);
+  pros::delay(800);
 
   index();
 
-  pros::delay(1000);
+  pros::delay(800);
+
+  index();
+
+  pros::delay(800);
 
   index();
 
@@ -316,12 +325,12 @@ void skills(){
   
   flywheel.move_velocity(-340);
 
-  EZchassis.set_drive_pid(-2, 30, true);
+  EZchassis.set_drive_pid(-3, 80, true);
   EZchassis.wait_drive();
 
   spinRoller(400, true);
 
-  EZchassis.set_drive_pid(18, 70, true);
+  EZchassis.set_drive_pid(19, 100, true);
   EZchassis.wait_drive();
 
   pros::delay(100);
@@ -329,15 +338,27 @@ void skills(){
   EZchassis.set_turn_pid(89, 100);
   EZchassis.wait_drive();
 
-  EZchassis.set_drive_pid(-22.5, 50, true);
+  EZchassis.set_drive_pid(-22, 80, true);
   EZchassis.wait_drive();
 
   spinRoller(400, true);
 
-  EZchassis.set_drive_pid(65, 110, true);
+  EZchassis.set_drive_pid(10, 110, true);
   EZchassis.wait_drive();
 
-  EZchassis.set_turn_pid(110, 100);
+  EZchassis.set_turn_pid(130, 100);
+  EZchassis.wait_drive();
+
+  EZchassis.set_drive_pid(15, 110);
+  EZchassis.wait_drive();
+
+  EZchassis.set_turn_pid(89, 100);
+  EZchassis.wait_drive();
+
+  EZchassis.set_drive_pid(48, 110, true);
+  EZchassis.wait_drive();
+
+  EZchassis.set_turn_pid(100, 100);
   EZchassis.wait_drive();
 
   pros::delay(200);
@@ -359,69 +380,35 @@ void skills(){
   EZchassis.set_turn_pid(180, 100);
   EZchassis.wait_drive();
 
-  EZchassis.set_drive_pid(-30, 60, true); //56 old
-  EZchassis.wait_drive();
-
-  pros::delay(600);
-
-  flywheel.move_velocity(-350);
-
-  EZchassis.set_drive_pid(4, 70, true);
-  EZchassis.wait_drive();
-
-  EZchassis.set_turn_pid(134, 100);
-  EZchassis.wait_drive();
-
-  //flywheel = -127;
-
-  pros::delay(100);
-
-  index();
-
-  pros::delay(600);
-
-  index();
-
-  pros::delay(600);
-
-  index();
-
-  pros::delay(600);
-
-  index();
-
-  pros::delay(100);
-
-  flywheel.move_velocity(-350);
-
-  EZchassis.set_turn_pid(180, 100);
-  EZchassis.wait_drive();
-
-  intake = 127;
-
-  EZchassis.set_turn_pid(195, 100);
-  EZchassis.wait_drive();
-
-  EZchassis.set_drive_pid(-30, 60, true); 
+  EZchassis.set_drive_pid(-40, 60); //56 old
   EZchassis.wait_drive();
 
   pros::delay(500);
 
-  EZchassis.set_drive_pid(20, 60, true); 
+  EZchassis.set_drive_pid(-35, 90); //56 old
   EZchassis.wait_drive();
 
-  EZchassis.set_turn_pid(180, 100);
+  pros::delay(500);
+
+  EZchassis.set_drive_pid(35, 60, true); 
   EZchassis.wait_drive();
 
-  EZchassis.set_drive_pid(15, 70, true);
+  EZchassis.set_turn_pid(138, 100);
   EZchassis.wait_drive();
 
   intake = 0;
 
-  EZchassis.set_turn_pid(132, 100);
-  EZchassis.wait_drive();
+  pros::delay(100);
+
+  index();
 
   pros::delay(100);
+
+  intake = 127;
+
+  pros::delay(600);
+
+  intake = 0;
 
   index();
 
@@ -429,26 +416,27 @@ void skills(){
 
   index();
 
-  pros::delay(600);
-
-  index();
-
   pros::delay(100);
 
-  flywheel.move_velocity(-350);
-
-  EZchassis.set_drive_pid(-8, 70, true);
-  EZchassis.wait_drive();
+  flywheel.move_velocity(-345);
 
   EZchassis.set_turn_pid(229, 100);
   EZchassis.wait_drive();
 
   intake = 127;
 
-  EZchassis.set_drive_pid(-61, 60, true);
+  EZchassis.set_drive_pid(-20, 60, true);
   EZchassis.wait_drive();
 
-  pros::delay(400);
+  pros::delay(800);
+
+  EZchassis.set_drive_pid(-44, 90, true);
+  EZchassis.wait_drive();
+
+  pros::delay(800);
+
+  EZchassis.set_drive_pid(10, 90, true);
+  EZchassis.wait_drive();
 
   intake = 0;
 
@@ -458,15 +446,20 @@ void skills(){
   EZchassis.set_drive_pid(18, 70, true);
   EZchassis.wait_drive();
 
+  EZchassis.set_turn_pid(187, 100);
+  EZchassis.wait_drive();
+
   pros::delay(100);
 
   index();
 
   pros::delay(600);
 
-  index();
+  intake = 127;
 
   pros::delay(600);
+
+  intake = 0;
 
   index();
 
@@ -476,7 +469,10 @@ void skills(){
 
   pros::delay(200);
 
-  flywheel.move_velocity(-350);
+  EZchassis.set_turn_pid(180, 100);
+  EZchassis.wait_drive();
+
+  flywheel.move_velocity(-345);
 
   EZchassis.set_drive_pid(-35, 60, true);
   EZchassis.wait_drive();
@@ -505,6 +501,9 @@ void skills(){
   EZchassis.set_drive_pid(57, 70, true);
   EZchassis.wait_drive();
 
+  EZchassis.set_turn_pid(187, 100);
+  EZchassis.wait_drive();
+
   pros::delay(100);
 
   index();
@@ -517,11 +516,20 @@ void skills(){
 
   flywheel = 0;
 
+  intake = 127;
+
+  EZchassis.set_turn_pid(180, 100);
+  EZchassis.wait_drive();
+
   EZchassis.set_drive_pid(-48, 70, true);
   EZchassis.wait_drive();
 
+  intake = 0;
+
   EZchassis.set_turn_pid(270, 100);
   EZchassis.wait_drive();
+
+  intake = 0;
 
   EZchassis.set_drive_pid(-13, 70, true);
   EZchassis.wait_drive();
@@ -542,7 +550,7 @@ void skills(){
   EZchassis.set_drive_pid(20, 70, true);
   EZchassis.wait_drive();
 
-  EZchassis.set_turn_pid(229, 50);
+  EZchassis.set_turn_pid(226, 50);
   EZchassis.wait_drive();
 
   EZchassis.set_drive_pid(-8, 30, true);
@@ -557,7 +565,7 @@ void skills(){
 
 void rightSide(){
 
-  flywheel.move_velocity(-445);
+  flywheel.move_velocity(-440);
 
   EZchassis.set_drive_pid(25, 90, true);
   EZchassis.wait_drive();
@@ -573,10 +581,10 @@ void rightSide(){
   EZchassis.set_drive_pid(5, 30, true);
   EZchassis.wait_drive();
 
-  EZchassis.set_turn_pid(-70, 100);
+  EZchassis.set_turn_pid(-69, 100);
   EZchassis.wait_drive();
 
-  index();
+  halfIndex();
 
   pros::delay(1000);
 
@@ -604,23 +612,22 @@ void rightSide(){
 
   pros::delay(400);
 
-  EZchassis.set_turn_pid(-38, 100);
+  EZchassis.set_turn_pid(-41, 100);
   EZchassis.wait_drive();
 
   pros::delay(200);
 
   index();
 
-  pros::delay(1000);
+  pros::delay(800);
 
   index();
 
-  pros::delay(1000);
+  pros::delay(800);
 
   index();
 
   pros::delay(300);
 
   flywheel = 0;
-
 }
